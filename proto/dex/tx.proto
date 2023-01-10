@@ -2,12 +2,24 @@ syntax = "proto3";
 package orderbook.dex;
 
 // this line is used by starport scaffolding # proto/tx/import
+import "cosmos/base/v1beta1/coin.proto";
+import "gogoproto/gogo.proto";
 
 option go_package = "orderbook/x/dex/types";
 
 // Msg defines the Msg service.
 service Msg {
-    // this line is used by starport scaffolding # proto/tx/rpc
+      rpc CreateOrder(MsgCreateOrder) returns (MsgCreateOrderResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreateOrder {
+  string creator = 1;
+  cosmos.base.v1beta1.Coin sourceToken = 2 [(gogoproto.nullable) = false];
+  cosmos.base.v1beta1.Coin destToken = 3 [(gogoproto.nullable) = false];
+}
+
+message MsgCreateOrderResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message

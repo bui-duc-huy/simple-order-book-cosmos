@@ -9,6 +9,8 @@
  * ---------------------------------------------------------------
  */
 
+export type DexMsgCreateOrderResponse = object;
+
 export interface DexOrder {
   /** @format uint64 */
   id?: string;
