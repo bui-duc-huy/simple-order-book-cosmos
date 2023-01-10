@@ -1,0 +1,16 @@
+syntax = "proto3";
+package orderbook.dex;
+
+option go_package = "orderbook/x/dex/types";
+import "gogoproto/gogo.proto"; 
+import "cosmos/base/v1beta1/coin.proto"; 
+
+message Order {
+  uint64 id = 1;
+  cosmos.base.v1beta1.Coin sourceToken = 2 [(gogoproto.nullable) = false]; 
+  cosmos.base.v1beta1.Coin destToken = 3 [(gogoproto.nullable) = false]; 
+  string creator = 4; 
+  string state = 5; 
+  string buyer = 6; 
+  
+}
