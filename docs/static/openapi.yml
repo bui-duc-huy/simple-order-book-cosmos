@@ -52073,6 +52073,10 @@ definitions:
     description: |-
       Version defines the versioning scheme used to negotiate the IBC verison in
       the connection handshake.
+  orderbook.dex.MsgCancelOrderResponse:
+    type: object
+  orderbook.dex.MsgCreateOrderResponse:
+    type: object
   orderbook.dex.Order:
     type: object
     properties:
