@@ -11,6 +11,7 @@ option go_package = "orderbook/x/dex/types";
 service Msg {
       rpc CreateOrder(MsgCreateOrder) returns (MsgCreateOrderResponse);
   rpc CancelOrder(MsgCancelOrder) returns (MsgCancelOrderResponse);
+  rpc ApproveOrder(MsgApproveOrder) returns (MsgApproveOrderResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -29,6 +30,14 @@ message MsgCancelOrder {
 }
 
 message MsgCancelOrderResponse {
+}
+
+message MsgApproveOrder {
+  string creator = 1;
+  uint64 id = 2;
+}
+
+message MsgApproveOrderResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message

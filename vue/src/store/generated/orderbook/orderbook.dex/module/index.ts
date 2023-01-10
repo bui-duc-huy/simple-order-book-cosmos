@@ -4,13 +4,15 @@ import { StdFee } from "@cosmjs/launchpad";
 import { SigningStargateClient } from "@cosmjs/stargate";
 import { Registry, OfflineSigner, EncodeObject, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { Api } from "./rest";
-import { MsgCancelOrder } from "./types/dex/tx";
 import { MsgCreateOrder } from "./types/dex/tx";
+import { MsgCancelOrder } from "./types/dex/tx";
+import { MsgApproveOrder } from "./types/dex/tx";
 
 
 const types = [
-  ["/orderbook.dex.MsgCancelOrder", MsgCancelOrder],
   ["/orderbook.dex.MsgCreateOrder", MsgCreateOrder],
+  ["/orderbook.dex.MsgCancelOrder", MsgCancelOrder],
+  ["/orderbook.dex.MsgApproveOrder", MsgApproveOrder],
   
 ];
 export const MissingWalletError = new Error("wallet is required");
@@ -43,8 +45,9 @@ const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions =
 
   return {
     signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ""}) => client.signAndBroadcast(address, msgs, fee,memo),
-    msgCancelOrder: (data: MsgCancelOrder): EncodeObject => ({ typeUrl: "/orderbook.dex.MsgCancelOrder", value: MsgCancelOrder.fromPartial( data ) }),
     msgCreateOrder: (data: MsgCreateOrder): EncodeObject => ({ typeUrl: "/orderbook.dex.MsgCreateOrder", value: MsgCreateOrder.fromPartial( data ) }),
+    msgCancelOrder: (data: MsgCancelOrder): EncodeObject => ({ typeUrl: "/orderbook.dex.MsgCancelOrder", value: MsgCancelOrder.fromPartial( data ) }),
+    msgApproveOrder: (data: MsgApproveOrder): EncodeObject => ({ typeUrl: "/orderbook.dex.MsgApproveOrder", value: MsgApproveOrder.fromPartial( data ) }),
     
   };
 };

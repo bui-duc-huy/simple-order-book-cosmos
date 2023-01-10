@@ -213,38 +213,130 @@ func (m *MsgCancelOrderResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgCancelOrderResponse proto.InternalMessageInfo
 
+type MsgApproveOrder struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Id      uint64 `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (m *MsgApproveOrder) Reset()         { *m = MsgApproveOrder{} }
+func (m *MsgApproveOrder) String() string { return proto.CompactTextString(m) }
+func (*MsgApproveOrder) ProtoMessage()    {}
+func (*MsgApproveOrder) Descriptor() ([]byte, []int) {
+	return fileDescriptor_463701e671e5a5e0, []int{4}
+}
+func (m *MsgApproveOrder) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgApproveOrder) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgApproveOrder.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgApproveOrder) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgApproveOrder.Merge(m, src)
+}
+func (m *MsgApproveOrder) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgApproveOrder) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgApproveOrder.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgApproveOrder proto.InternalMessageInfo
+
+func (m *MsgApproveOrder) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgApproveOrder) GetId() uint64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type MsgApproveOrderResponse struct {
+}
+
+func (m *MsgApproveOrderResponse) Reset()         { *m = MsgApproveOrderResponse{} }
+func (m *MsgApproveOrderResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgApproveOrderResponse) ProtoMessage()    {}
+func (*MsgApproveOrderResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_463701e671e5a5e0, []int{5}
+}
+func (m *MsgApproveOrderResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgApproveOrderResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgApproveOrderResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgApproveOrderResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgApproveOrderResponse.Merge(m, src)
+}
+func (m *MsgApproveOrderResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgApproveOrderResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgApproveOrderResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgApproveOrderResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgCreateOrder)(nil), "orderbook.dex.MsgCreateOrder")
 	proto.RegisterType((*MsgCreateOrderResponse)(nil), "orderbook.dex.MsgCreateOrderResponse")
 	proto.RegisterType((*MsgCancelOrder)(nil), "orderbook.dex.MsgCancelOrder")
 	proto.RegisterType((*MsgCancelOrderResponse)(nil), "orderbook.dex.MsgCancelOrderResponse")
+	proto.RegisterType((*MsgApproveOrder)(nil), "orderbook.dex.MsgApproveOrder")
+	proto.RegisterType((*MsgApproveOrderResponse)(nil), "orderbook.dex.MsgApproveOrderResponse")
 }
 
 func init() { proto.RegisterFile("dex/tx.proto", fileDescriptor_463701e671e5a5e0) }
 
 var fileDescriptor_463701e671e5a5e0 = []byte{
-	// 323 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xc1, 0x4a, 0xf3, 0x40,
-	0x10, 0xc7, 0xb3, 0x6d, 0xf9, 0x3e, 0xba, 0xd5, 0x1e, 0x82, 0x4a, 0x2c, 0xb8, 0x96, 0x82, 0xd0,
-	0xd3, 0x2e, 0xad, 0x37, 0xc1, 0x83, 0xed, 0xb9, 0x08, 0xd1, 0x93, 0xb7, 0x24, 0x3b, 0x84, 0x50,
-	0xcd, 0x94, 0xdd, 0x28, 0xf1, 0x2d, 0x7c, 0x10, 0xc1, 0xd7, 0xe8, 0xb1, 0x47, 0x4f, 0x22, 0xc9,
-	0x8b, 0x48, 0x12, 0x63, 0x12, 0x2c, 0xea, 0x6d, 0x66, 0x67, 0xff, 0xbf, 0xf9, 0xcf, 0x30, 0x74,
-	0x47, 0x42, 0x2c, 0xa2, 0x98, 0xaf, 0x14, 0x46, 0x68, 0xee, 0xa2, 0x92, 0xa0, 0x5c, 0xc4, 0x25,
-	0x97, 0x10, 0x0f, 0x98, 0x87, 0xfa, 0x0e, 0xb5, 0x70, 0x1d, 0x0d, 0xe2, 0x61, 0xe2, 0x42, 0xe4,
-	0x4c, 0x84, 0x87, 0x41, 0x58, 0x7c, 0x1f, 0xec, 0xf9, 0xe8, 0x63, 0x1e, 0x8a, 0x2c, 0x2a, 0x5e,
-	0x47, 0xcf, 0x84, 0xf6, 0x17, 0xda, 0x9f, 0x2b, 0x70, 0x22, 0xb8, 0xcc, 0x80, 0xa6, 0x45, 0xff,
-	0x7b, 0x59, 0x8a, 0xca, 0x22, 0x43, 0x32, 0xee, 0xda, 0x65, 0x6a, 0x5e, 0xd0, 0x9e, 0xc6, 0x7b,
-	0xe5, 0xc1, 0x35, 0x2e, 0x21, 0xb4, 0x5a, 0x43, 0x32, 0xee, 0x4d, 0x0f, 0x79, 0xd1, 0x98, 0x67,
-	0x8d, 0xf9, 0x67, 0x63, 0x3e, 0xc7, 0x20, 0x9c, 0x75, 0xd6, 0x6f, 0xc7, 0x86, 0x5d, 0xd7, 0x98,
-	0xe7, 0xb4, 0x2b, 0x41, 0x47, 0x05, 0xa0, 0xfd, 0x37, 0x40, 0xa5, 0x18, 0x59, 0xf4, 0xa0, 0xe9,
-	0xd6, 0x06, 0xbd, 0xc2, 0x50, 0xc3, 0xe8, 0xac, 0x98, 0xc3, 0x09, 0x3d, 0xb8, 0xfd, 0x6d, 0x8e,
-	0x3e, 0x6d, 0x05, 0x32, 0xb7, 0xdf, 0xb1, 0x5b, 0x81, 0x2c, 0xa9, 0x95, 0xb6, 0xa4, 0x4e, 0x5f,
-	0x08, 0x6d, 0x2f, 0xb4, 0x6f, 0x5e, 0xd1, 0x5e, 0x7d, 0x45, 0x47, 0xbc, 0xb1, 0x7b, 0xde, 0xf4,
-	0x34, 0x38, 0xf9, 0xb1, 0x5c, 0xc2, 0x73, 0x68, 0xcd, 0xef, 0x36, 0x68, 0x55, 0xde, 0x0a, 0xfd,
-	0xee, 0x78, 0x26, 0xd6, 0x09, 0x23, 0x9b, 0x84, 0x91, 0xf7, 0x84, 0x91, 0xa7, 0x94, 0x19, 0x9b,
-	0x94, 0x19, 0xaf, 0x29, 0x33, 0x6e, 0xf6, 0xbf, 0xf4, 0x22, 0x16, 0xf9, 0x25, 0x3d, 0xae, 0x40,
-	0xbb, 0xff, 0xf2, 0x43, 0x38, 0xfd, 0x08, 0x00, 0x00, 0xff, 0xff, 0x25, 0x6a, 0x84, 0xfd, 0x5d,
-	0x02, 0x00, 0x00,
+	// 363 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x92, 0xcf, 0x4e, 0xea, 0x40,
+	0x14, 0xc6, 0xdb, 0x42, 0xee, 0x0d, 0x03, 0x97, 0x9b, 0x34, 0xf7, 0x6a, 0x69, 0xe2, 0x48, 0x48,
+	0x34, 0xac, 0x66, 0x02, 0xee, 0x34, 0x2e, 0x80, 0x35, 0x31, 0xa9, 0xc6, 0x85, 0xbb, 0xfe, 0x39,
+	0x69, 0x1a, 0xb4, 0xa7, 0xe9, 0x54, 0x52, 0x9f, 0xc0, 0xad, 0x0f, 0xe2, 0x83, 0xb0, 0x64, 0xe9,
+	0xca, 0x18, 0x78, 0x11, 0xd3, 0xd6, 0x42, 0x2b, 0x04, 0x75, 0x37, 0xd3, 0xaf, 0xdf, 0xef, 0x9c,
+	0xf3, 0xcd, 0x21, 0x0d, 0x07, 0x62, 0x1e, 0xc5, 0x2c, 0x08, 0x31, 0x42, 0xf5, 0x0f, 0x86, 0x0e,
+	0x84, 0x16, 0xe2, 0x84, 0x39, 0x10, 0xeb, 0xd4, 0x46, 0x71, 0x87, 0x82, 0x5b, 0xa6, 0x00, 0x3e,
+	0xed, 0x59, 0x10, 0x99, 0x3d, 0x6e, 0xa3, 0xe7, 0x67, 0xbf, 0xeb, 0xff, 0x5c, 0x74, 0x31, 0x3d,
+	0xf2, 0xe4, 0x94, 0x7d, 0xed, 0x3c, 0xcb, 0xa4, 0x39, 0x16, 0xee, 0x28, 0x04, 0x33, 0x82, 0x8b,
+	0x04, 0xa8, 0x6a, 0xe4, 0xb7, 0x9d, 0x5c, 0x31, 0xd4, 0xe4, 0xb6, 0xdc, 0xad, 0x19, 0xf9, 0x55,
+	0x1d, 0x90, 0xba, 0xc0, 0xfb, 0xd0, 0x86, 0x2b, 0x9c, 0x80, 0xaf, 0x29, 0x6d, 0xb9, 0x5b, 0xef,
+	0xb7, 0x58, 0x56, 0x98, 0x25, 0x85, 0xd9, 0x47, 0x61, 0x36, 0x42, 0xcf, 0x1f, 0x56, 0x67, 0xaf,
+	0x87, 0x92, 0x51, 0xf4, 0xa8, 0xe7, 0xa4, 0xe6, 0x80, 0x88, 0x32, 0x40, 0xe5, 0x7b, 0x80, 0xb5,
+	0xa3, 0xa3, 0x91, 0xbd, 0x72, 0xb7, 0x06, 0x88, 0x00, 0x7d, 0x01, 0x9d, 0xd3, 0x6c, 0x0e, 0xd3,
+	0xb7, 0xe1, 0xf6, 0xab, 0x39, 0x9a, 0x44, 0xf1, 0x9c, 0xb4, 0xfd, 0xaa, 0xa1, 0x78, 0x4e, 0x4e,
+	0x5d, 0x7b, 0x57, 0xd4, 0x33, 0xf2, 0x77, 0x2c, 0xdc, 0x41, 0x10, 0x84, 0x38, 0x85, 0x9f, 0x62,
+	0x5b, 0x64, 0xff, 0x93, 0x39, 0xe7, 0xf6, 0x1f, 0x15, 0x52, 0x19, 0x0b, 0x57, 0xbd, 0x24, 0xf5,
+	0x62, 0xf4, 0x07, 0xac, 0xf4, 0xa6, 0xac, 0x3c, 0xab, 0x7e, 0xb4, 0x53, 0xce, 0xe1, 0x29, 0xb4,
+	0x90, 0xc3, 0x36, 0xe8, 0x5a, 0xde, 0x0a, 0xdd, 0x4c, 0x42, 0xbd, 0x26, 0x8d, 0x52, 0x0c, 0x74,
+	0xd3, 0x56, 0xd4, 0xf5, 0xe3, 0xdd, 0x7a, 0xce, 0x1d, 0xf2, 0xd9, 0x82, 0xca, 0xf3, 0x05, 0x95,
+	0xdf, 0x16, 0x54, 0x7e, 0x5a, 0x52, 0x69, 0xbe, 0xa4, 0xd2, 0xcb, 0x92, 0x4a, 0x37, 0xff, 0x57,
+	0x00, 0x1e, 0xf3, 0x74, 0xf3, 0x1f, 0x02, 0x10, 0xd6, 0xaf, 0x74, 0x71, 0x4f, 0xde, 0x03, 0x00,
+	0x00, 0xff, 0xff, 0xa4, 0x0b, 0xeb, 0xd4, 0x0d, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -261,6 +353,7 @@ const _ = grpc.SupportPackageIsVersion4
 type MsgClient interface {
 	CreateOrder(ctx context.Context, in *MsgCreateOrder, opts ...grpc.CallOption) (*MsgCreateOrderResponse, error)
 	CancelOrder(ctx context.Context, in *MsgCancelOrder, opts ...grpc.CallOption) (*MsgCancelOrderResponse, error)
+	ApproveOrder(ctx context.Context, in *MsgApproveOrder, opts ...grpc.CallOption) (*MsgApproveOrderResponse, error)
 }
 
 type msgClient struct {
@@ -289,10 +382,20 @@ func (c *msgClient) CancelOrder(ctx context.Context, in *MsgCancelOrder, opts ..
 	return out, nil
 }
 
+func (c *msgClient) ApproveOrder(ctx context.Context, in *MsgApproveOrder, opts ...grpc.CallOption) (*MsgApproveOrderResponse, error) {
+	out := new(MsgApproveOrderResponse)
+	err := c.cc.Invoke(ctx, "/orderbook.dex.Msg/ApproveOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	CreateOrder(context.Context, *MsgCreateOrder) (*MsgCreateOrderResponse, error)
 	CancelOrder(context.Context, *MsgCancelOrder) (*MsgCancelOrderResponse, error)
+	ApproveOrder(context.Context, *MsgApproveOrder) (*MsgApproveOrderResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -304,6 +407,9 @@ func (*UnimplementedMsgServer) CreateOrder(ctx context.Context, req *MsgCreateOr
 }
 func (*UnimplementedMsgServer) CancelOrder(ctx context.Context, req *MsgCancelOrder) (*MsgCancelOrderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelOrder not implemented")
+}
+func (*UnimplementedMsgServer) ApproveOrder(ctx context.Context, req *MsgApproveOrder) (*MsgApproveOrderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ApproveOrder not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -346,6 +452,24 @@ func _Msg_CancelOrder_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_ApproveOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgApproveOrder)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).ApproveOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/orderbook.dex.Msg/ApproveOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).ApproveOrder(ctx, req.(*MsgApproveOrder))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "orderbook.dex.Msg",
 	HandlerType: (*MsgServer)(nil),
@@ -357,6 +481,10 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CancelOrder",
 			Handler:    _Msg_CancelOrder_Handler,
+		},
+		{
+			MethodName: "ApproveOrder",
+			Handler:    _Msg_ApproveOrder_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -494,6 +622,64 @@ func (m *MsgCancelOrderResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) 
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgApproveOrder) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgApproveOrder) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgApproveOrder) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Id != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Id))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgApproveOrderResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgApproveOrderResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgApproveOrderResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -548,6 +734,31 @@ func (m *MsgCancelOrder) Size() (n int) {
 }
 
 func (m *MsgCancelOrderResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgApproveOrder) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.Id != 0 {
+		n += 1 + sovTx(uint64(m.Id))
+	}
+	return n
+}
+
+func (m *MsgApproveOrderResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -888,6 +1099,157 @@ func (m *MsgCancelOrderResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgCancelOrderResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgApproveOrder) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgApproveOrder: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgApproveOrder: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+			}
+			m.Id = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Id |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgApproveOrderResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgApproveOrderResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgApproveOrderResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

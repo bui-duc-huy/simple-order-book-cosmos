@@ -9,6 +9,8 @@
  * ---------------------------------------------------------------
  */
 
+export type DexMsgApproveOrderResponse = object;
+
 export type DexMsgCancelOrderResponse = object;
 
 export type DexMsgCreateOrderResponse = object;

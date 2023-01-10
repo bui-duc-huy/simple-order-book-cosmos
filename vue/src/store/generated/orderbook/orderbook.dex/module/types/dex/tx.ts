@@ -20,6 +20,13 @@ export interface MsgCancelOrder {
 
 export interface MsgCancelOrderResponse {}
 
+export interface MsgApproveOrder {
+  creator: string;
+  id: number;
+}
+
+export interface MsgApproveOrderResponse {}
+
 const baseMsgCreateOrder: object = { creator: "" };
 
 export const MsgCreateOrder = {
@@ -263,11 +270,130 @@ export const MsgCancelOrderResponse = {
   },
 };
 
+const baseMsgApproveOrder: object = { creator: "", id: 0 };
+
+export const MsgApproveOrder = {
+  encode(message: MsgApproveOrder, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.id !== 0) {
+      writer.uint32(16).uint64(message.id);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgApproveOrder {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgApproveOrder } as MsgApproveOrder;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.id = longToNumber(reader.uint64() as Long);
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgApproveOrder {
+    const message = { ...baseMsgApproveOrder } as MsgApproveOrder;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.id !== undefined && object.id !== null) {
+      message.id = Number(object.id);
+    } else {
+      message.id = 0;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgApproveOrder): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.id !== undefined && (obj.id = message.id);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgApproveOrder>): MsgApproveOrder {
+    const message = { ...baseMsgApproveOrder } as MsgApproveOrder;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.id !== undefined && object.id !== null) {
+      message.id = object.id;
+    } else {
+      message.id = 0;
+    }
+    return message;
+  },
+};
+
+const baseMsgApproveOrderResponse: object = {};
+
+export const MsgApproveOrderResponse = {
+  encode(_: MsgApproveOrderResponse, writer: Writer = Writer.create()): Writer {
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgApproveOrderResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgApproveOrderResponse,
+    } as MsgApproveOrderResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgApproveOrderResponse {
+    const message = {
+      ...baseMsgApproveOrderResponse,
+    } as MsgApproveOrderResponse;
+    return message;
+  },
+
+  toJSON(_: MsgApproveOrderResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<MsgApproveOrderResponse>
+  ): MsgApproveOrderResponse {
+    const message = {
+      ...baseMsgApproveOrderResponse,
+    } as MsgApproveOrderResponse;
+    return message;
+  },
+};
+
 /** Msg defines the Msg service. */
 export interface Msg {
   CreateOrder(request: MsgCreateOrder): Promise<MsgCreateOrderResponse>;
-  /** this line is used by starport scaffolding # proto/tx/rpc */
   CancelOrder(request: MsgCancelOrder): Promise<MsgCancelOrderResponse>;
+  /** this line is used by starport scaffolding # proto/tx/rpc */
+  ApproveOrder(request: MsgApproveOrder): Promise<MsgApproveOrderResponse>;
 }
 
 export class MsgClientImpl implements Msg {
@@ -288,6 +414,14 @@ export class MsgClientImpl implements Msg {
     const promise = this.rpc.request("orderbook.dex.Msg", "CancelOrder", data);
     return promise.then((data) =>
       MsgCancelOrderResponse.decode(new Reader(data))
+    );
+  }
+
+  ApproveOrder(request: MsgApproveOrder): Promise<MsgApproveOrderResponse> {
+    const data = MsgApproveOrder.encode(request).finish();
+    const promise = this.rpc.request("orderbook.dex.Msg", "ApproveOrder", data);
+    return promise.then((data) =>
+      MsgApproveOrderResponse.decode(new Reader(data))
     );
   }
 }
